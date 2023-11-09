@@ -45,14 +45,25 @@ namespace EmberekLista
 
 		private void deleteBtn_Click(object sender, RoutedEventArgs e)
 		{
+			Ember elem = null;
+
 			for (int i = 0;i < lista.Count;i++) 
 			{
 				if(lista[i] == emberek.SelectedItem)
 				{
-					lista.Remove(lista[i]);
+					elem = lista[i];
 				}
 			};
-			emberek.Items.Refresh();
+
+			if(elem != null && MessageBoxResult.Yes == MessageBox.Show("Biztos törli ezt az elemt: " + elem.Nev, "Törlés", MessageBoxButton.YesNo, MessageBoxImage.Stop) && elem != null)
+			{
+				lista.Remove(elem);
+				emberek.Items.Refresh();
+			}
+			else if(elem == null)
+			{
+				MessageBox.Show("Nincs kiválasztva elem","Hiba",MessageBoxButton.OK,MessageBoxImage.Error);
+			}
 		}
 	}
 }
