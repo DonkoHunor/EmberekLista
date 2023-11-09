@@ -34,13 +34,30 @@ namespace EmberekLista
 
 		private void addBtn_Click(object sender, RoutedEventArgs e)
 		{
-			if(!string.IsNullOrWhiteSpace(nevTextBox.Text) && !string.IsNullOrWhiteSpace(korTextBox.Text))
+			if(string.IsNullOrWhiteSpace(nevTextBox.Text) || string.IsNullOrWhiteSpace(korTextBox.Text))
+			{
+				MessageBox.Show("Minden mezőt ki kell tölteni!");
+				return;
+			}
+			else if(!int.TryParse(korTextBox.Text, out int temp))
+			{
+				MessageBox.Show("A kor csak szám lehet!");
+				return;
+			}
+			else if(temp < 0 || temp > 200)
+			{
+				MessageBox.Show("A kornak 0 és 200 közöttinek kell lennie!");
+				return;
+			}
+			else
 			{
 				lista.Add(new Ember(nevTextBox.Text.ToString(), Convert.ToInt32(korTextBox.Text.ToString())));
 				emberek.Items.Refresh();
+				nevTextBox.Text = "";
+				korTextBox.Text = "";
 			}
-			nevTextBox.Text = "";
-			korTextBox.Text = "";
+			
+
 		}
 
 		private void deleteBtn_Click(object sender, RoutedEventArgs e)
@@ -63,7 +80,7 @@ namespace EmberekLista
 			else if(elem == null)
 			{
 				MessageBox.Show("Nincs kiválasztva elem","Hiba",MessageBoxButton.OK,MessageBoxImage.Error);
-			}
+			}			
 		}
 	}
 }
