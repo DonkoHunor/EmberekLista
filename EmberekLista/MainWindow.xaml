@@ -27,7 +27,7 @@
 		<TextBox x:Name="korTextBox" Grid.Column="3" VerticalAlignment="Center" HorizontalAlignment="Stretch"/>
 		
 		<Button x:Name="addBtn" Grid.Column="4" Content="Hozzáadás" VerticalAlignment="Center" HorizontalAlignment="Center" Width="100" Height="20" Click="addBtn_Click"/>
-		<Button x:Name="deleteBtn" Grid.Column="5" Content="Törlés" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" Height="20"/>
+		<Button x:Name="deleteBtn" Grid.Column="5" Content="Törlés" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100" Height="20" Click="deleteBtn_Click"/>
 		
 		<DataGrid x:Name="emberek" d:ItemsSource="{d:SampleData ItemCount=5}" VerticalAlignment="Top" HorizontalAlignment="Stretch" AutoGenerateColumns="False" Height="300" Grid.Row="2" Grid.ColumnSpan="6">
 			<DataGrid.Columns>

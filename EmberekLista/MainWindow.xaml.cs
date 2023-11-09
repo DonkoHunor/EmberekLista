@@ -36,18 +36,23 @@ namespace EmberekLista
 		{
 			if(!string.IsNullOrWhiteSpace(nevTextBox.Text) && !string.IsNullOrWhiteSpace(korTextBox.Text))
 			{
-				try
-				{
-					Convert.ToInt32(korTextBox.Text);
-				}
-				catch (Exception)
-				{
-					MessageBox.Show("");
-					throw;
-				}
-				lista.Add(new Ember(nevTextBox.Text, Convert.ToInt32(korTextBox.Text)));
-				emberek.ItemsSource = lista;
+				lista.Add(new Ember(nevTextBox.Text.ToString(), Convert.ToInt32(korTextBox.Text.ToString())));
+				emberek.Items.Refresh();
 			}
+			nevTextBox.Text = "";
+			korTextBox.Text = "";
+		}
+
+		private void deleteBtn_Click(object sender, RoutedEventArgs e)
+		{
+			for (int i = 0;i < lista.Count;i++) 
+			{
+				if(lista[i] == emberek.SelectedItem)
+				{
+					lista.Remove(lista[i]);
+				}
+			};
+			emberek.Items.Refresh();
 		}
 	}
 }
