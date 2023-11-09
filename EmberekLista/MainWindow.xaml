@@ -31,8 +31,8 @@
 		
 		<DataGrid x:Name="emberek" d:ItemsSource="{d:SampleData ItemCount=5}" VerticalAlignment="Top" HorizontalAlignment="Stretch" AutoGenerateColumns="False" Height="300" Grid.Row="2" Grid.ColumnSpan="6">
 			<DataGrid.Columns>
-				<DataGridTextColumn Header="Név" Binding="{Binding Nev}"/>
-				<DataGridTextColumn Header="Életkor" Binding="{Binding Kor}"/>
+				<DataGridTextColumn Header="Név" Width="*" Binding="{Binding Nev}"/>
+				<DataGridTextColumn Header="Életkor" Width="*" Binding="{Binding Kor}"/>
 			</DataGrid.Columns>
 		</DataGrid>
 	</Grid>
